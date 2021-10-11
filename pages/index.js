@@ -42,7 +42,7 @@ export default function Home() {
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
           Partcombinator{' '}
-          <Text as={'span'} color={'orange.400'}>
+          <Text as={'span'} color={'orange'}>
             NextJS
           </Text>
         </Heading>
@@ -55,9 +55,7 @@ export default function Home() {
           <Button
             rounded={'full'}
             px={6}
-            colorScheme={'orange'}
-            bg={'orange.400'}
-            _hover={{ bg: 'orange.500' }}>
+            colorScheme={'orange'}>
             Login
           </Button>
         </Link>

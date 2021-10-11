@@ -98,8 +98,8 @@ export default function Register() {
             Register
           </Button>
 
-          <Flex align="center" justifyContent="center" mt={2}>
-            <Link href="/">Home</Link> / <Link href="/login">Login</Link>
+          <Flex align="center" justifyContent="space-between" mt={2}>
+            <Link href="/">Home</Link>  <Link href="/login">Login</Link>
           </Flex>
         </Flex>
       </form>

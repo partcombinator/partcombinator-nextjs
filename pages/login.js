@@ -70,8 +70,8 @@ export default function Login() {
                       name="password"
                        />
               <Button isLoading={isLoading} colorScheme="orange" type="submit">Login</Button>
-              <Flex align="center" justifyContent="center" mt={2}>
-                  <Link href="/">Home</Link>  /  <Link href="/register">Register</Link> 
+              <Flex align="center" justifyContent="space-between" mt={2}>
+                  <Link href="/">Home</Link><Link href="/register">Register</Link> 
               </Flex>
             </Flex>
         </form>
