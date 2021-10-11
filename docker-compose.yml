@@ -1,0 +1,51 @@
+version: '2'
+services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs:ro
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+  
+  letsencrypt:
+    container_name: letsencrypt
+    image : jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    volumes:
+      - ./certs:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    volumes_from:
+      - nginx-proxy:rw
+  
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    restart: always
+    expose:
+      - "80"
+    volumes:
+      - .:/usr/share/nginx/html:ro
+    environment:
+      - VIRTUAL_HOST=myslink.xyz,www.myslink.xyz
+      - LETSENCRYPT_HOST=myslink.xyz,www.myslink.xyz
+      - LETSENCRYPT_EMAIL=mfalconsoft@gmail.com
+  
+  nextjs:
+    build: ./
+    restart: always
+    links:
+          - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
