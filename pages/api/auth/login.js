@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 export default async function handler(req, res) {
     const { method } = req
-    await dbConnect()
+    await dbConnect(process.env.MONGODB_URI)
 
     if (!dbConnect) {
       res.status(400).json({ success: false, error: "db: undefined" })
@@ -13,9 +13,7 @@ export default async function handler(req, res) {
     switch (method) {
       case 'POST':
         try {
-            
             const user = await User.findOne({ email: req.body.email });
-
             !user && res.status(401).json({ success: false, error: "Wrong credentials!" })
             const hashedPassword = CryptoJS.AES.decrypt(
                 user.password,
@@ -39,12 +37,12 @@ export default async function handler(req, res) {
              res.status(200).json({success: true, ...others, accessToken});
 
         } catch (error) {
-          res.status(500).json({ success: false })
+          res.status(500).json({ success: false, error: error })
         }
         break
       
     default:
-        res.status(400).json({ success: false })
+        res.status(400).json({ success: false, error: "default" })
         break
     }
   }

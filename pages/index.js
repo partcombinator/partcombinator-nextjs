@@ -41,7 +41,7 @@ export default function Home() {
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
-          Partcombinator{' '}
+          {process.env.NAME_APP}{' '}
           <Text as={'span'} color={'orange'}>
             NextJS
           </Text>

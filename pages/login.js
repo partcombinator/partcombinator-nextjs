@@ -48,8 +48,11 @@ export default function Login() {
   return (
         <Flex height="100vh" align="center" justifyContent="center">
           <form onSubmit={formik.handleSubmit}>
+            <Link href="/">
+                <Heading mb={6} align="center">{process.env.NAME_APP}</Heading>
+            </Link>
             <Flex direction="column" backgroundColor={formBackground} p={20} rouded={6}>
-                <Heading mb={6}>Login</Heading>
+                <Heading mb={6} align="center">Login</Heading>
                 <Input 
                     placeholder="demo@demo.cl" 
                     variant="flushed" 
@@ -70,8 +73,8 @@ export default function Login() {
                       name="password"
                        />
               <Button isLoading={isLoading} colorScheme="orange" type="submit">Login</Button>
-              <Flex align="center" justifyContent="space-between" mt={2}>
-                  <Link href="/">Home</Link><Link href="/register">Register</Link> 
+              <Flex align="center" mt={2}>
+                    Already got an account?<Link href="/register">Register</Link> 
               </Flex>
             </Flex>
         </form>
