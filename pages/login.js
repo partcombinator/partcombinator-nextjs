@@ -49,7 +49,7 @@ export default function Login() {
         <Flex height="100vh" align="center" justifyContent="center">
           <form onSubmit={formik.handleSubmit}>
             <Link href="/">
-                <Heading mb={6} align="center">{process.env.NAME_APP}</Heading>
+                <Heading mb={6} align="center" color={'orange'}>{process.env.NAME_APP}</Heading>
             </Link>
             <Flex direction="column" backgroundColor={formBackground} p={20} rouded={6}>
                 <Heading mb={6} align="center">Login</Heading>

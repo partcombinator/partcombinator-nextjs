@@ -2,14 +2,14 @@ import mongoose from 'mongoose'
 
 const connection = {} /* creating connection object*/
 
-async function dbConnect(url) {
+async function dbConnect() {
   /* check if we have connection to our databse*/
   if (connection.isConnected) {
     return
   }
   try {
     /* connecting to our database */
-    console.log("process.env.MONGODB_URI:", url)
+    const url = process.env.MONGODB_URI
     const db = await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

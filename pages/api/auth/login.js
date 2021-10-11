@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 export default async function handler(req, res) {
     const { method } = req
-    await dbConnect(process.env.MONGODB_URI)
+    await dbConnect()
 
     if (!dbConnect) {
       res.status(400).json({ success: false, error: "db: undefined" })
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         break
       
     default:
-        res.status(400).json({ success: false, error: "default" })
+        res.status(400).json({ success: false, error: "I only work with POST" })
         break
     }
   }

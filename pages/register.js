@@ -57,7 +57,7 @@ export default function Register() {
         
       <form onSubmit={formik.handleSubmit}>
       <Link href="/">
-                <Heading mb={6} align="center">{process.env.NAME_APP}</Heading>
+                <Heading mb={6} align="center" color={'orange'}>{process.env.NAME_APP}</Heading>
             </Link>
         <Flex 
           direction="column"
@@ -103,7 +103,7 @@ export default function Register() {
           </Button>
 
           <Flex align="center" justifyContent="center" mt={2}>
-              <Link href="/login">Login</Link>
+                    Already an account? <Link href="/login">Login</Link>
           </Flex>
         </Flex>
       </form>
