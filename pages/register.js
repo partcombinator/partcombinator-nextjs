@@ -8,7 +8,7 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-// import { addUser } from "../api/user";
+import { addUser } from "../api/auth";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from 'next/router'
