@@ -55,13 +55,14 @@ export default function Register() {
   return (
     <Flex height="100vh" align="center" justifyContent="center">
       <form onSubmit={formik.handleSubmit}>
-        <Flex
+        <Flex 
           direction="column"
           backgroundColor={formBackground}
-          p={12}
+          p={20}
           rouded={6}
+          
         >
-          <Heading mb={6}>Register</Heading>
+          <Heading mb={6} >Register</Heading>
 
           <Input
             placeholder="demo@demo.cl"
@@ -93,7 +94,7 @@ export default function Register() {
             isInvalid={formik.errors.userRepeatPassword}
             name="userRepeatPassword"
           />
-          <Button colorScheme="teal" type="submit">
+          <Button colorScheme="orange" type="submit">
             Register
           </Button>
 

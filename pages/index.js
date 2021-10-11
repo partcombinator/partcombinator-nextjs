@@ -1,9 +1,28 @@
+import { ReactNode } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Link from "next/link";
+
+import {
+  Flex,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Button,
+  Icon,Box,useColorModeValue,SimpleGrid,
+  IconProps,
+} from '@chakra-ui/react';
+
+
+import Footer from '../components/Front/Footer';
+
+
 
 export default function Home() {
   return (
+    <>
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -12,12 +31,53 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Hello</h1>
-      </main>
-
-      <footer className={styles.footer}>
+      <Container maxW={'5xl'}>
+      <Stack
+        textAlign={'center'}
+        align={'center'}
+        spacing={{ base: 8, md: 10 }}
+        py={{ base: 20, md: 28 }}>
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+          lineHeight={'110%'}>
+          Partcombinator{' '}
+          <Text as={'span'} color={'orange.400'}>
+            NextJS
+          </Text>
+        </Heading>
+        <Text color={'gray.500'} maxW={'3xl'}>
+          Marlon Falcon Hernandez
+        </Text>
+        <Stack spacing={6} direction={'row'}>
         
-      </footer>
-    </div>
-  )
+        <Link href="/login" passHref>
+          <Button
+            rounded={'full'}
+            px={6}
+            colorScheme={'orange'}
+            bg={'orange.400'}
+            _hover={{ bg: 'orange.500' }}>
+            Login
+          </Button>
+        </Link>
+
+          <Link href="/register" passHref>
+            <Button rounded={'full'} px={6}>
+              Register
+            </Button>
+          </Link>
+
+        </Stack>
+        
+      </Stack>
+    </Container>
+      </main>
+      </div>
+      
+      
+
+      <Footer/>
+    
+      </>)
 }

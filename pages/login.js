@@ -48,7 +48,7 @@ export default function Login() {
   return (
         <Flex height="100vh" align="center" justifyContent="center">
           <form onSubmit={formik.handleSubmit}>
-            <Flex direction="column" backgroundColor={formBackground} p={12} rouded={6}>
+            <Flex direction="column" backgroundColor={formBackground} p={20} rouded={6}>
                 <Heading mb={6}>Login</Heading>
                 <Input 
                     placeholder="demo@demo.cl" 
@@ -69,7 +69,7 @@ export default function Login() {
                        isInvalid={formik.errors.password}
                       name="password"
                        />
-              <Button isLoading={isLoading} colorScheme="teal" type="submit">Login</Button>
+              <Button isLoading={isLoading} colorScheme="orange" type="submit">Login</Button>
               <Flex align="center" justifyContent="center" mt={2}>
                   <Link href="/">Home</Link>  /  <Link href="/register">Register</Link> 
               </Flex>
