@@ -11,12 +11,16 @@ import {
   Heading,
   Stack,
   Text,
+  useColorMode,
+  useColorModeValue,IconButton,
 } from "@chakra-ui/react";
-
+import { DeleteIcon, MoonIcon } from "@chakra-ui/icons";
 export default function Dashboard() {
+    
   const router = useRouter();
   const { logout, auth, setReloadUser } = useAuth();
   const [user, setUser] = useState(undefined);
+  const { toggleColorMode } = useColorMode();
 
   if (!auth) {
     router.push("/");
@@ -59,6 +63,16 @@ export default function Dashboard() {
             Change Your Password
           </Button>
         </Link>
+
+        <IconButton
+          ml={3}
+          px={6}
+          _hover={{
+            bg: "green.500",
+          }}
+          onClick={toggleColorMode}
+          icon={<MoonIcon />}
+        />
 
               <Text color={"gray.500"} maxW={"3xl"}>
                 Marlon Falcon Hernandez
