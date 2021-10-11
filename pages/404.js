@@ -6,22 +6,15 @@ import useAuth from "../hooks/useAuth";
 import { useRouter } from "next/router";
 
 import {
-  Flex,Button,
+  Flex,
   Container,
   Heading,
   Stack,
   Text,
 } from "@chakra-ui/react";
 
-export default function Dashboard() {
-  const router = useRouter();
-  const { logout, auth, setReloadUser } = useAuth();
-  const [user, setUser] = useState(undefined);
+export default function Page404() {
 
-  if (!auth) {
-    router.push("/");
-    return null;
-  }
 
   return (
     <>
@@ -45,21 +38,11 @@ export default function Dashboard() {
                 fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
                 lineHeight={"110%"}
               >
-                Dashboard{" "}
+                404{" "}
                 <Text as={"span"} color={"orange.400"}>
-                  <Link href="/">PartCombinator</Link>
+                    This page could not be found.
                 </Text>
               </Heading>
-
-              <Link href="/login" passHref>
-          <Button
-            rounded={'full'}
-            px={6}
-            colorScheme={'orange'}>
-            Change Your Password
-          </Button>
-        </Link>
-
               <Text color={"gray.500"} maxW={"3xl"}>
                 Marlon Falcon Hernandez
               </Text>

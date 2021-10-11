@@ -25,28 +25,28 @@ export default function Register() {
     validationSchema: Yup.object(validationSchema()),
     onSubmit: async (formData, { resetForm }) => {
       setIsLoading(true);
-    //   if (formData.userPassword !== formData.userRepeatPassword) {
-    //     toast({
-    //       title: `The password are not the same`,
-    //       status: "error",
-    //       position: "top-left",
-    //       isClosable: true,
-    //       duration: 1000,
-    //     });
-    //   } else {
-    //     const response = await addUser(formData);
-    //     if (!response) {
-    //       toast({
-    //         title: `Error at create user`,
-    //         status: "error",
-    //         position: "top-left",
-    //         isClosable: true,
-    //         duration: 1000,
-    //       });
-    //     } else {
-    //       router.push("/login");
-    //     }
-    //   }
+      if (formData.userPassword !== formData.userRepeatPassword) {
+        toast({
+          title: `The password are not the same`,
+          status: "error",
+          position: "top-left",
+          isClosable: true,
+          duration: 1000,
+        });
+      } else {
+        const response = await addUser(formData);
+        if (!response) {
+          toast({
+            title: `Error at create user`,
+            status: "error",
+            position: "top-left",
+            isClosable: true,
+            duration: 1000,
+          });
+        } else {
+          router.push("/login");
+        }
+      }
       resetForm({ values: "" });
       setIsLoading(false);
     },

@@ -8,17 +8,17 @@ import {
   Button,
   useColorModeValue
 } from "@chakra-ui/react";
-// import { loginApi } from "../api/user";
+import { loginApi } from "../api/auth";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from 'next/router'
-// import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 export default function Login() {
   const formBackground = useColorModeValue("gray.100", "gray.700");
   const toast = useToast();
   const router = useRouter();
-//   const { login } = useAuth();
+  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -26,20 +26,20 @@ export default function Login() {
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
     onSubmit: async (formData, { resetForm }) => {
-        // setIsLoading(true);
-        // const response = await loginApi(formData);
-        // if (!response.success) {
-        //   toast({
-        //     title: `${response.error}`,
-        //     status: "error",
-        //     position: "top-left",
-        //     isClosable: true,
-        //     duration: 1000,
-        //   });
-        // } else {
-        //   login(response.accessToken);
-        //   router.push("/dashboard");
-        // }
+        setIsLoading(true);
+        const response = await loginApi(formData);
+        if (!response.success) {
+          toast({
+            title: `${response.error}`,
+            status: "error",
+            position: "top-left",
+            isClosable: true,
+            duration: 1000,
+          });
+        } else {
+          login(response.accessToken);
+          router.push("/dashboard");
+        }
       resetForm({ values: "" });
       setIsLoading(false);
     },

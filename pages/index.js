@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { ReactNode } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
@@ -14,13 +15,12 @@ import {
   Icon,Box,useColorModeValue,SimpleGrid,
   IconProps,
 } from '@chakra-ui/react';
-
+import useAuth from "../hooks/useAuth";
 
 import Footer from '../components/Front/Footer';
-
-
-
 export default function Home() {
+  const { logout, auth, setReloadUser } = useAuth();
+  const [user, setUser] = useState(undefined);
   return (
     <>
     <div className={styles.container}>
@@ -51,6 +51,8 @@ export default function Home() {
         </Text>
         <Stack spacing={6} direction={'row'}>
         
+        {!auth && (
+          <>
         <Link href="/login" passHref>
           <Button
             rounded={'full'}
@@ -59,12 +61,36 @@ export default function Home() {
             Login
           </Button>
         </Link>
+        
 
           <Link href="/register" passHref>
             <Button rounded={'full'} px={6}>
               Register
             </Button>
           </Link>
+          </>
+          )}
+
+        {auth && (
+          <>
+          <Link href="/dashboard" passHref>
+          <Button
+            rounded={'full'}
+            px={6}
+            colorScheme={'orange'}>
+            Dashboard
+          </Button>
+        </Link>
+
+
+          <Button rounded={"full"} ml={3} px={6} mb={6} onClick={logout} >
+            {" "}
+            Logout{" "}
+          </Button>
+          </>
+        )}
+
+         
 
         </Stack>
         
