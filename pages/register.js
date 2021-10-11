@@ -62,7 +62,7 @@ export default function Register() {
           rouded={6}
           
         >
-          <Heading mb={6} >Register</Heading>
+          <Heading mb={6} >Sign Up</Heading>
 
           <Input
             placeholder="demo@demo.cl"
