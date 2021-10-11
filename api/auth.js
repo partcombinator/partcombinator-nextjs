@@ -40,10 +40,10 @@ export async function addUser(formData) {
     }
   }
 
-  export async function changePassword(oldPassword, newPassword, userId) {
-    const data = { password: password }
+  export async function changePassword(id, oldpassword, newpassword) {
+    const data = { id, oldpassword, newpassword }
     try {
-      const url = `${process.env.URL_SERVER}/api/auth/${userId}`;
+      const url = `${process.env.URL_SERVER}/api/auth/change-password`;
       const params = {
         method: "PUT",
         headers: {
@@ -51,11 +51,12 @@ export async function addUser(formData) {
         },
         body: JSON.stringify(data),
       };
+  
       const response = await authFetch(url, params);
       const result = await response;
       return result;
     } catch (error) {
-      console.log(error);
+        console.log(error);
       return null;
     }
   }

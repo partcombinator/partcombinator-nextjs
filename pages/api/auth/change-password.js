@@ -2,16 +2,15 @@ import dbConnect from '../../../db/dbConnect';
 import User from '../../../models/User';
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
-import { verifyToken } from "../../../utils/verifyToken";
+import { verifyTokenAndAuthorization } from "../../../utils/verifyToken";
 
 export default async function handler(req, res) {
     const { method } = req
     await dbConnect()
-
     if (!dbConnect) {
       res.status(400).json({ success: false, error: "db: undefined" })
     }
-    verifyToken(req, res)
+    verifyTokenAndAuthorization(req, res)
     switch (method) {
       case 'PUT':
         try {
@@ -41,7 +40,7 @@ export default async function handler(req, res) {
                     newpassword,
                     process.env.PASS_SEC
                   ).toString()
-                  
+
             const userUpdate = await User.findByIdAndUpdate(id, { password: hashedPasswordNew }, {
                     new: true,
                     runValidators: true,
