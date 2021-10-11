@@ -79,7 +79,7 @@ export default function Register() {
             isInvalid={formik.errors.userEmail}
           />
           <Input
-            placeholder="********"
+            placeholder="password"
             variant="flushed"
             mb={6}
             type="password"
@@ -89,7 +89,7 @@ export default function Register() {
             name="userPassword"
           />
           <Input
-            placeholder="********"
+            placeholder="password"
             variant="flushed"
             mb={6}
             type="password"

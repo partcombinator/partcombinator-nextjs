@@ -55,7 +55,7 @@ export default function Dashboard() {
                 </Text>
               </Heading>
 
-              <Link href="/login" passHref>
+        <Link href="/change-password" passHref>
           <Button
             rounded={'full'}
             px={6}

@@ -52,18 +52,19 @@ export default function Login() {
                 <Heading mb={6} align="center" color={'orange'}>{process.env.NAME_APP}</Heading>
             </Link>
             <Flex direction="column" backgroundColor={formBackground} p={20} rouded={6}>
-                <Heading mb={6} align="center">Login</Heading>
-                <Input 
-                    placeholder="demo@demo.cl" 
-                    variant="flushed" 
-                    mb={3} 
-                    type="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    isInvalid={formik.errors.email}
-                    name="email"
-                    />
-                <Input placeholder="password" 
+                <Heading mb={6} align="center">Change Password</Heading>
+                <Input placeholder="Old Password" 
+                       variant="flushed" 
+                       mb={6} 
+                       type="password"
+                       onChange={formik.handleChange}
+                       value={formik.values.oldpassword}
+                       isInvalid={formik.errors.oldpassword}
+                      name="oldpassword"
+                       />
+
+
+                <Input placeholder="New Password" 
                        variant="flushed" 
                        mb={6} 
                        type="password"
@@ -72,10 +73,17 @@ export default function Login() {
                        isInvalid={formik.errors.password}
                       name="password"
                        />
-              <Button isLoading={isLoading} colorScheme="orange" type="submit">Login</Button>
-              <Flex align="center" mt={2}>
-                    Already got an account?<Link href="/register">Register</Link> 
-              </Flex>
+
+                <Input placeholder="New Password" 
+                       variant="flushed" 
+                       mb={6} 
+                       type="password"
+                       onChange={formik.handleChange}
+                       value={formik.values.rpassword}
+                       isInvalid={formik.errors.rpassword}
+                      name="rpassword"
+                       />
+              <Button isLoading={isLoading} colorScheme="orange" type="submit">Change</Button>
             </Flex>
         </form>
     </Flex>
@@ -86,13 +94,13 @@ export default function Login() {
 function initialValues() {
   return {
     email: "",
-    password: "",
+    rpassword: "",
   };
 }
 
 function validationSchema() {
   return {
     email: Yup.string().required(true),
-    password: Yup.string().required(true)
+    rpassword: Yup.string().required(true)
   };
 }

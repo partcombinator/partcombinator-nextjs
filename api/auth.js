@@ -40,7 +40,7 @@ export async function addUser(formData) {
     }
   }
 
-  export async function changePassword(password, userId) {
+  export async function changePassword(oldPassword, newPassword, userId) {
     const data = { password: password }
     try {
       const url = `${process.env.URL_SERVER}/api/auth/${userId}`;
