@@ -1,4 +1,8 @@
 module.exports = {
+  images: {
+    loader: 'akamai',
+    path: '',
+  },
   reactStrictMode: true,
   env: {
     URL_SERVER: process.env.URL_SERVER,
